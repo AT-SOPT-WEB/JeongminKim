@@ -26,20 +26,25 @@ aside {
 nav {
     display: flex;
     flex-direction: column;
-    gap: 8px;
     width: 100%;
     background-color: #5f667e;
     border-radius: 8px;
     align-items: center;
-    padding: 16px;
     box-sizing: border-box;
 }
 nav a {
     text-decoration: none;
     color: #e8e8e8;
-    border-radius: 4px;
     width: 100%;
     text-align: center;
+    padding: 8px;
+    box-sizing: border-box;
+}
+nav a:first-child {
+    border-radius: 8px 8px 0 0;
+}
+nav a:last-child {
+    border-radius: 0 0 8px 8px;
 }
 nav a:hover {
     background-color: #3f4459;
@@ -154,4 +159,39 @@ section {
 .icon:hover {
     filter: brightness(0) saturate(100%) invert(28%) sepia(86%) saturate(4482%) hue-rotate(340deg) brightness(100%) contrast(90%);
     transform: scale(1.1);
+}
+/*무한 스크롤*/
+.infinite-banner {
+    width: 100%;
+    overflow: hidden;
+    background: #f0f4ff;
+    padding: 16px 0;
+    box-sizing: border-box;
+}
+
+.banner-track {
+    display: flex;
+    flex-wrap: nowrap;
+    animation: scrollLeft 20s linear infinite;
+    min-width: 200%;
+}
+
+.banner-track img {
+    height: 80px;
+    width: auto;
+    flex-shrink: 0;
+    margin-right: 16px;
+    border-radius: 8px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+/* 반응형 무한 스크롤 */
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
