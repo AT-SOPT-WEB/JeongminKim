@@ -4,6 +4,7 @@ footer {
     padding: 12px;
     border-radius: 8px;
     margin: 4px;
+    z-index: 2;
 }
 
 footer p {
