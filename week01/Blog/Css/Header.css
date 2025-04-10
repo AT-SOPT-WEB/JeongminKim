@@ -4,9 +4,12 @@ header {
     text-align: center;
     border-radius: 8px;
     margin: 4px;
+    position: sticky;
     display: flex;
+    top: 0;
     justify-content: space-between;
     align-items: center;
+    border: rgb(255, 255, 255) 5px solid;
 }
 
 h1 {
@@ -19,7 +22,7 @@ h1 {
 .logo-wrapper {
     flex-grow: 1;
     display: flex;
-    justify-content: center; /* 가운데 정렬 */
+    justify-content: center;
 }
 
 .logo-wrapper img {
