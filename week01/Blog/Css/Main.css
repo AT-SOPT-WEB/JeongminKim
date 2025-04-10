@@ -143,6 +143,10 @@ section {
     padding: 16px;
     box-sizing: border-box;
 }
+.card-grid div:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
 
 .card-grid img:not(.icon) {
     width: 100%;
