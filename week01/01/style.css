@@ -1,0 +1,55 @@
+h1 {
+    color: rgb(50, 107, 186);
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin: 4px;
+    padding: 16px;
+    border-radius: 10px;
+    background-color: rgba(50, 107, 186, 0.1);
+}
+hr {
+    border: 0;
+    border-top: 1px dashed rgba(50, 107, 186, 0.5);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+h2 {
+    color: rgb(124, 130, 138);
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 4px;
+    padding: 16px;
+}
+
+ol li {
+    margin: 4px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: rgba(82, 146, 237, 0.1);
+}
+ol li:hover {
+    background-color: rgba(50, 107, 186, 0.2);
+}
+
+ul li {
+    margin: 4px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: rgba(125, 92, 153, 0.1);
+}
+
+ul li:hover {
+    background-color: rgba(125, 92, 153, 0.2);
+}
+
+p {
+    color: rgb(124, 130, 138);
+    font-size: 0.5em;
+    font-weight: normal;
+    text-align: center;
+    margin: 4px;
+}
