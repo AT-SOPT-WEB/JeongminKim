@@ -1,5 +1,5 @@
 header {
-    background-color: #d4e9ff;
+    background-color: var(--color-bg-pale);
     padding: 4px;
     text-align: center;
     border-radius: 8px;
@@ -9,16 +9,17 @@ header {
     top: 0;
     justify-content: space-between;
     align-items: center;
-    border: rgb(255, 255, 255) 5px solid;
+    border: var(--color-border-white) 5px solid;
 }
 
 h1 {
-    color: rgb(50, 107, 186);
+    color: var(--color-text-primary);
     font-size: 2em;
     font-weight: bold;
     margin: 0;
     flex-grow: 1;
 }
+
 .logo-wrapper {
     flex-grow: 1;
     display: flex;
@@ -30,6 +31,7 @@ h1 {
     border-radius: 50%;
     object-fit: cover;
 }
+
 header .logo-wrapper:first-of-type {
     justify-content: flex-start;
     padding-left: 16px;

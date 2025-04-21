@@ -1,0 +1,18 @@
+:root {
+    /* 배경 색상 */
+    --color-bg-light: #f0f4ff;
+    --color-bg-dark: #5f667e;
+    --color-bg-dark-hover: #3f4459;
+    --color-bg-section: #e4eaff;
+    --color-bg-accent: #9aaad5;
+    --color-bg-pale: #d4e9ff;
+
+    /* 텍스트 색상 */
+    --color-text-light: #e8e8e8;
+    --color-text-muted: rgb(124, 130, 138);
+    --color-text-primary: rgb(50, 107, 186);
+
+    /* 공통 요소 */
+    --color-border-white: rgb(255, 255, 255);
+    --color-surface: #ffffff;
+}

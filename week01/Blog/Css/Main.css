@@ -1,5 +1,5 @@
 main {
-    background-color: #f0f4ff;
+    background-color: var(--color-bg-light);
     display: flex;
     flex-direction: row;
     padding: 0;
@@ -8,7 +8,8 @@ main {
     box-sizing: border-box;
     margin-left: 150px;
 }
-/*네비바*/
+
+/* 네비바 */
 aside {
     position: fixed;
     top: 65.6px;
@@ -27,34 +28,38 @@ nav {
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: #5f667e;
+    background-color: var(--color-bg-dark);
     border-radius: 8px;
     align-items: center;
     box-sizing: border-box;
 }
+
 nav a {
     text-decoration: none;
-    color: #e8e8e8;
+    color: var(--color-text-light);
     width: 100%;
     text-align: center;
     padding: 8px;
     box-sizing: border-box;
 }
+
 nav a:first-child {
     border-radius: 8px 8px 0 0;
 }
+
 nav a:last-child {
     border-radius: 0 0 8px 8px;
 }
+
 nav a:hover {
-    background-color: #3f4459;
+    background-color: var(--color-bg-dark-hover);
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-/*섹션*/
+/* 섹션 */
 section {
     flex-grow: 1;
     padding: 0;
@@ -64,7 +69,8 @@ section {
     align-items: center;
     box-sizing: border-box;
 }
-/*그리드 이미지*/
+
+/* 그리드 이미지 */
 .gride-article {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -73,7 +79,7 @@ section {
     margin: 32px 0 16px 0;
     padding: 32px;
     width: 90%;
-    background-color: #9aaad5;
+    background-color: var(--color-bg-accent);
     border-radius: 8px;
     box-sizing: border-box;
 }
@@ -107,12 +113,12 @@ section {
     grid-row: span 2;
 }
 
-/*메인 세션*/
+/* 메인 세션 */
 .main-article {
     width: 90%;
     margin: 16px 0;
     padding: 32px;
-    background-color: #e4eaff;
+    background-color: var(--color-bg-section);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -133,7 +139,7 @@ section {
 }
 
 .card-grid div {
-    background-color: white;
+    background-color: var(--color-surface);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -143,6 +149,7 @@ section {
     padding: 16px;
     box-sizing: border-box;
 }
+
 .card-grid div:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease;
@@ -164,11 +171,12 @@ section {
     filter: brightness(0) saturate(100%) invert(28%) sepia(86%) saturate(4482%) hue-rotate(340deg) brightness(100%) contrast(90%);
     transform: scale(1.1);
 }
-/*무한 스크롤*/
+
+/* 무한 스크롤 */
 .infinite-banner {
     width: 100%;
     overflow: hidden;
-    background: #f0f4ff;
+    background: var(--color-bg-light);
     padding: 16px 0;
     box-sizing: border-box;
 }
