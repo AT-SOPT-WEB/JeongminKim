@@ -1,4 +1,4 @@
-main {
+.main-layout {
     background-color: var(--color-bg-light);
     display: flex;
     flex-direction: row;
@@ -10,7 +10,7 @@ main {
 }
 
 /* 네비바 */
-aside {
+.sidebar {
     position: fixed;
     top: 65.6px;
     left: 0;
@@ -24,7 +24,7 @@ aside {
     z-index: 1;
 }
 
-nav {
+.nav-menu {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -34,7 +34,7 @@ nav {
     box-sizing: border-box;
 }
 
-nav a {
+.nav-menu a {
     text-decoration: none;
     color: var(--color-text-light);
     width: 100%;
@@ -43,15 +43,15 @@ nav a {
     box-sizing: border-box;
 }
 
-nav a:first-child {
+.nav-menu a:first-child {
     border-radius: 8px 8px 0 0;
 }
 
-nav a:last-child {
+.nav-menu a:last-child {
     border-radius: 0 0 8px 8px;
 }
 
-nav a:hover {
+.nav-menu a:hover {
     background-color: var(--color-bg-dark-hover);
 }
 
@@ -60,7 +60,7 @@ html {
 }
 
 /* 섹션 */
-section {
+.main-section {
     flex-grow: 1;
     padding: 0;
     margin: 0;

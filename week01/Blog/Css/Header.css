@@ -1,4 +1,4 @@
-header {
+.header {
     background-color: var(--color-bg-pale);
     padding: 4px;
     text-align: center;
@@ -12,7 +12,7 @@ header {
     border: var(--color-border-white) 5px solid;
 }
 
-h1 {
+.header-title {
     color: var(--color-text-primary);
     font-size: 2em;
     font-weight: bold;
@@ -32,12 +32,12 @@ h1 {
     object-fit: cover;
 }
 
-header .logo-wrapper:first-of-type {
+.header .logo-wrapper:first-of-type {
     justify-content: flex-start;
     padding-left: 16px;
 }
 
-header .logo-wrapper:last-of-type {
+.header .logo-wrapper:last-of-type {
     justify-content: flex-end;
     padding-right: 16px;
 }
