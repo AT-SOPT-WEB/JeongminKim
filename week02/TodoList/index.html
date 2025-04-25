@@ -13,9 +13,10 @@
             <h1 class="title">Todo List</h1>
             <hr />
             <!-- 필터링 버튼 -->
-            <button type="button" class="filter-btn">전체</button>
-            <button type="button" class="filter-btn">완료됨</button>
-            <button type="button" class="filter-btn">미완료</button>
+            <button type="button" class="filter-btn" data-filter="all">전체</button>
+            <button type="button" class="filter-btn" data-filter="completed">완료됨</button>
+            <button type="button" class="filter-btn" data-filter="active">미완료</button>
+
             <select class="filter-btn">
                 <option value="" disabled selected>중요도</option>
                 <option value="1">⚝</option>
