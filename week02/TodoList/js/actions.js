@@ -30,19 +30,19 @@ export function setActionButtons() {
     const completeBtn = document.querySelectorAll(".action-btn")[1];
 
     deleteBtn.addEventListener("click", () => {
-        let todos = JSON.parse(localStorage.getItem("todoItems")) || [];
+        let todos = JSON.parse(localStorage.getItem("todos")) || [];
         const checkedIndexes = getCheckedIndexes();
         checkedIndexes
             .sort((a, b) => b - a)
             .forEach((index) => {
                 todos.splice(index, 1);
             });
-        localStorage.setItem("todoItems", JSON.stringify(todos));
+        localStorage.setItem("todos", JSON.stringify(todos));
         renderTodos(todos);
     });
 
     completeBtn.addEventListener("click", () => {
-        let todos = JSON.parse(localStorage.getItem("todoItems")) || [];
+        let todos = JSON.parse(localStorage.getItem("todos")) || [];
         const checkedIndexes = getCheckedIndexes();
 
         const hasCompleted = checkedIndexes.some((index) => todos[index].completed);
@@ -55,7 +55,7 @@ export function setActionButtons() {
             todos[index].completed = true;
         });
 
-        localStorage.setItem("todoItems", JSON.stringify(todos));
+        localStorage.setItem("todos", JSON.stringify(todos));
         renderTodos(todos);
     });
 }

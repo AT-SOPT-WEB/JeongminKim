@@ -2,7 +2,7 @@
 import { renderTodos } from "./render.js";
 
 export function filterTodos(condition) {
-    const allTodos = JSON.parse(localStorage.getItem("todoItems"));
+    const allTodos = JSON.parse(localStorage.getItem("todos"));
 
     let filtered = allTodos;
     if (condition === "completed") {

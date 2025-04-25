@@ -22,9 +22,9 @@ export function addTodo() {
             completed: false,
         };
 
-        const todos = JSON.parse(localStorage.getItem("todoItems")) || [];
+        const todos = JSON.parse(localStorage.getItem("todos")) || [];
         todos.push(newTodo);
-        localStorage.setItem("todoItems", JSON.stringify(todos));
+        localStorage.setItem("todos", JSON.stringify(todos));
 
         renderTodos(todos);
         inputEl.value = "";
