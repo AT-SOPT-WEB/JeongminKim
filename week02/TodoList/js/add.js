@@ -1,6 +1,7 @@
+//input 추가 함수수
 import { renderTodos } from "./render.js";
 
-export function handleAddTodo() {
+export function addTodo() {
     const inputEl = document.getElementById("todo-input");
     const selectEl = document.getElementById("todo-select");
     const addBtn = document.getElementById("add-btn");

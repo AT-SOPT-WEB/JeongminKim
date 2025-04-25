@@ -1,3 +1,4 @@
+//필터링 버튼
 import { renderTodos } from "./render.js";
 
 export function filterTodos(condition) {
@@ -12,7 +13,7 @@ export function filterTodos(condition) {
     renderTodos(filtered);
 }
 
-export function setupFilterButtons() {
+export function setFilterButtons() {
     document.querySelectorAll(".filter-btn").forEach((button) => {
         button.addEventListener("click", () => {
             const condition = button.dataset.filter;

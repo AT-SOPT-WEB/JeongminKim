@@ -1,3 +1,4 @@
+//삭제, 완료 버튼
 import { renderTodos } from "./render.js";
 
 function getCheckedIndexes() {
@@ -7,7 +8,24 @@ function getCheckedIndexes() {
         .map((checkbox) => parseInt(checkbox.dataset.index));
 }
 
-export function setupActionButtons() {
+//모달
+function showModal() {
+    document.getElementById("modal").classList.remove("hidden");
+}
+
+function hideModal() {
+    document.getElementById("modal").classList.add("hidden");
+}
+
+function setupModalEvent() {
+    const closeBtn = document.getElementById("modal-btn");
+    if (closeBtn) {
+        closeBtn.addEventListener("click", hideModal);
+    }
+}
+
+export function setActionButtons() {
+    setupModalEvent();
     const deleteBtn = document.querySelectorAll(".action-btn")[0];
     const completeBtn = document.querySelectorAll(".action-btn")[1];
 
@@ -29,7 +47,7 @@ export function setupActionButtons() {
 
         const hasCompleted = checkedIndexes.some((index) => todos[index].completed);
         if (hasCompleted) {
-            alert("이미 완료된 항목이 포함되어 있어 완료 처리가 취소됩니다.");
+            showModal();
             return;
         }
 
