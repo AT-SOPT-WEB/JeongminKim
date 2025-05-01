@@ -1,0 +1,118 @@
+main {
+    background-color: var(--color-bg);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/*추가 영역*/
+.todo-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 8px;
+    border-radius: 16px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: var(--color-btn-light);
+}
+
+#todo-input {
+    width: 70%;
+    padding: 5px;
+    border: none;
+    border-radius: 50px 0 0 50px;
+    font-size: 1rem;
+    background-color: var(--color-btn-bg);
+    color: var(--color-text);
+}
+
+#todo-select {
+    padding: 4.6px;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    font-size: 1rem;
+    background-color: var(--color-btn-bg);
+    color: var(--color-text);
+}
+
+#add-btn {
+    padding: 4.6px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    background-color: var(--color-btn-bg);
+    color: var(--color-text);
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+/*선택 영역*/
+.todo-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    padding: 8px;
+    font-size: 0.75rem;
+    gap: 8px;
+    box-sizing: border-box;
+}
+
+.action-btn {
+    background-color: var(--color-btn-bg);
+    color: var(--color-text);
+    border: none;
+    padding: 3px 10px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    border-radius: 5px;
+}
+
+/*목록*/
+.todo-table-container {
+    width: 100%;
+    border-radius: 8px;
+    background-color: var(--color-btn-light);
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+#todo-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+}
+
+#todo-table th {
+    background-color: var(--color-btn-bg);
+    color: var(--color-text);
+    padding: 8px;
+    text-align: left;
+    font-size: 0.75rem;
+}
+
+#todo-table th:nth-child(1) {
+    width: 10%;
+    border-radius: 8px 0 0 0;
+}
+#todo-table th:nth-child(2) {
+    width: 20%;
+}
+#todo-table th:nth-child(3) {
+    width: 20%;
+}
+#todo-table th:nth-child(4) {
+    width: 50%;
+    border-radius: 0 8px 0 0;
+}
+
+#todo-table td {
+    padding: 8px;
+    text-align: start;
+    font-size: 0.75rem;
+    color: var(--color-text);
+}

@@ -1,0 +1,25 @@
+.title {
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px 0;
+    color: var(--color-text);
+    font-weight: bold;
+    align-self: center;
+}
+
+hr {
+    width: 100%;
+    border: dashed 1px var(--color-border);
+}
+
+.filter-btn {
+    background-color: var(--color-btn-bg);
+    color: var(--color-text);
+    border: none;
+    padding: 3px 10px;
+    margin: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 0.75rem;
+    border-radius: 5px;
+    align-self: start;
+}

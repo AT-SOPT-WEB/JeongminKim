@@ -1,0 +1,17 @@
+:root {
+    --color-bg: #ffdf865b;
+    --color-btn-bg: #ffd786;
+    --color-btn-light: #fffaec;
+    --color-text: #2d1703;
+    --color-border: #481c00;
+
+    --color-primary: #c7f16c;
+}
+
+body {
+    background-color: var(--color-bg);
+    width: 60%;
+    min-width: 500px;
+    justify-self: center;
+    align-self: center;
+}
