@@ -2,13 +2,13 @@
 import styled from "@emotion/styled";
 
 const StyledHeader = styled.header`
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.primary};
     text-align: center;
     padding: ${({ theme }) => theme.spacing.lg};
 `;
 
 const Title = styled.h1`
-    color: ${({ theme }) => theme.colors.primary};
+    color: white;
     font-size: ${({ theme }) => theme.fontSizes.xl};
     margin: 0;
     padding-bottom: ${({ theme }) => theme.spacing.md};

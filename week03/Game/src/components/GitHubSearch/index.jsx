@@ -1,10 +1,40 @@
+import { useState } from "react";
+import styled from "@emotion/styled";
+import Input from "./Input";
+import UserCard from "./UserCard";
+
 export default function GitHubSearch() {
+    const [username, setUsername] = useState("");
+    const [userInfo, setUserInfo] = useState({ status: "idle", data: null });
+
+    const getUserInfo = async (user) => {
+        setUserInfo({ status: "pending", data: null });
+        try {
+            const response = await fetch(`https://api.github.com/users/${user}`);
+            if (!response.ok) throw new Error();
+            const data = await response.json();
+            setUserInfo({ status: "resolved", data });
+        } catch {
+            setUserInfo({ status: "rejected", data: null });
+        }
+    };
+
+    const clearUserInfo = () => {
+        setUserInfo({ status: "idle", data: null });
+        setUsername("");
+    };
+
     return (
-        <div>
-            <h1>GitHub Search</h1>
-            <p>GitHub에서 사용자를 검색하는 기능입니다.</p>
-            <p>사용자의 이름을 입력하면 해당 사용자의 정보를 가져옵니다.</p>
-            <p>사용자의 정보를 가져오면 해당 사용자의 정보를 보여줍니다.</p>
-        </div>
+        <Container>
+            <Input username={username} setUsername={setUsername} onSearch={() => getUserInfo(username)} onClear={clearUserInfo} />
+            <UserCard userInfo={userInfo} />
+        </Container>
     );
 }
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;

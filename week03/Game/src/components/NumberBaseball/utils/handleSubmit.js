@@ -4,7 +4,7 @@ import { generateAnswer } from "./generateAnswer";
 
 export function handleSubmit({ inputValue, answer, setInputValue, setMessage, setHistory, setAnswer, setGameOver }) {
     if (!isValidInput(inputValue)) {
-        setMessage("⚠️ 3자리의 중복 없는 숫자를 입력해주세요");
+        setMessage("3자리의 중복 없는 숫자를 입력해주세요");
         return;
     }
 

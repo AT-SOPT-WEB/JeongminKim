@@ -1,12 +1,11 @@
 import styled from "@emotion/styled";
 
-export default function Input({ value, setValue, onSubmit, disabled }) {
+export default function Input({ username, setUsername, onSearch, onClear }) {
     return (
         <Container>
-            <InputBox type="text" maxLength={3} value={value} onChange={(e) => setValue(e.target.value)} disabled={disabled} placeholder="3자리 숫자 입력" />
-            <Btn onClick={onSubmit} disabled={disabled}>
-                입력
-            </Btn>
+            <InputBox type="text" placeholder="깃허브 아이디 입력" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <Btn onClick={onSearch}>검색</Btn>
+            <Btn onClick={onClear}>❌</Btn>
         </Container>
     );
 }
@@ -20,6 +19,7 @@ const Container = styled.div`
     padding: ${({ theme }) => theme.spacing.lg};
     width: 90%;
 `;
+
 const InputBox = styled.input`
     width: 100%;
     border: 2px solid ${({ theme }) => theme.colors.text};
@@ -28,6 +28,7 @@ const InputBox = styled.input`
     font-size: ${({ theme }) => theme.fontSizes.lg};
     box-sizing: border-box;
 `;
+
 const Btn = styled.button`
     width: 100px;
     padding: ${({ theme }) => theme.spacing.md};

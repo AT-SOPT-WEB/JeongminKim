@@ -1,16 +1,5 @@
 import styled from "@emotion/styled";
 
-const Container = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-`;
-const Message = styled.p`
-    font-size: ${({ theme }) => theme.fontSizes.lg};
-    color: ${({ theme }) => theme.colors.text};
-`;
-
 export default function Msg({ message }) {
     return (
         <Container>
@@ -18,3 +7,17 @@ export default function Msg({ message }) {
         </Container>
     );
 }
+
+const Container = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 70%;
+    margin-bottom: ${({ theme }) => theme.spacing.md};
+`;
+const Message = styled.p`
+    font-size: ${({ theme }) => theme.fontSizes.lg};
+    color: ${({ theme }) => theme.colors.error};
+    font-weight: bold;
+`;

@@ -1,13 +1,6 @@
 import styled from "@emotion/styled";
 import GameRecordItem from "./GameRecordItem";
 
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`;
-
 export default function List({ history }) {
     return (
         <Container>
@@ -17,3 +10,11 @@ export default function List({ history }) {
         </Container>
     );
 }
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    gap: ${({ theme }) => theme.spacing.sm};
+`;
