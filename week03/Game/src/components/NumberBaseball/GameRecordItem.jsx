@@ -5,16 +5,18 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    padding: ${({ theme }) => theme.spacing.xs} 0;
 `;
+
 const Message = styled.p`
-    font-size: ${({ theme }) => theme.fontSizes.lg};
+    font-size: ${({ theme }) => theme.fontSizes.md};
     color: ${({ theme }) => theme.colors.text};
 `;
 
-export default function GameRecordItem() {
+export default function GameRecordItem({ guess, result }) {
     return (
         <Container>
-            <Message>이전 기록</Message>
+            <Message>{`${guess} - ${result}`}</Message>
         </Container>
     );
 }

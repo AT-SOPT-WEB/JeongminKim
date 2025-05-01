@@ -11,10 +11,10 @@ const Message = styled.p`
     color: ${({ theme }) => theme.colors.text};
 `;
 
-export default function Msg() {
+export default function Msg({ message }) {
     return (
         <Container>
-            <Message>이전 기록</Message>
+            <Message>{message}</Message>
         </Container>
     );
 }

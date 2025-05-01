@@ -27,11 +27,13 @@ const Btn = styled.button`
     color: ${({ theme }) => theme.colors.text};
 `;
 
-export default function Input() {
+export default function Input({ value, setValue, onSubmit, disabled }) {
     return (
         <Container>
-            <InputBox type="text" maxLength={3} placeholder="3자리 숫자를 입력하세요" />
-            <Btn type="button">입력</Btn>
+            <InputBox type="text" maxLength={3} value={value} onChange={(e) => setValue(e.target.value)} disabled={disabled} placeholder="3자리 숫자 입력" />
+            <Btn onClick={onSubmit} disabled={disabled}>
+                입력
+            </Btn>
         </Container>
     );
 }

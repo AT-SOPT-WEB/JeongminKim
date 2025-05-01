@@ -8,13 +8,12 @@ const Container = styled.div`
     justify-content: center;
 `;
 
-export default function List() {
+export default function List({ history }) {
     return (
         <Container>
-            <p>이전기록 리스트 목록</p>
-            <GameRecordItem />
-            <GameRecordItem />
-            <GameRecordItem />
+            {history.map((entry, i) => (
+                <GameRecordItem key={i} guess={entry.guess} result={entry.result} />
+            ))}
         </Container>
     );
 }
