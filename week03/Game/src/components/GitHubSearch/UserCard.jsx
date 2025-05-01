@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 export default function UserCard({ userInfo, onClear }) {
-    if (userInfo.status === "pending") return <p>로딩 중...</p>;
-    if (userInfo.status === "rejected") return <p>😢 유저를 찾을 수 없습니다</p>;
+    if (userInfo.status === "pending") return <Text>로딩 중...</Text>;
+    if (userInfo.status === "rejected") return <Text>😢 유저를 찾을 수 없습니다</Text>;
     if (userInfo.status !== "resolved") return null;
 
     const data = userInfo.data;
