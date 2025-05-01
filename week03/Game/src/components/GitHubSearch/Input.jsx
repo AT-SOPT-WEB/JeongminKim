@@ -1,11 +1,15 @@
 import styled from "@emotion/styled";
 
-export default function Input({ username, setUsername, onSearch, onClear }) {
+export default function Input({ username, setUsername, onSearch }) {
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            onSearch();
+        }
+    };
+
     return (
         <Container>
-            <InputBox type="text" placeholder="깃허브 아이디 입력" value={username} onChange={(e) => setUsername(e.target.value)} />
-            <Btn onClick={onSearch}>검색</Btn>
-            <Btn onClick={onClear}>❌</Btn>
+            <InputBox type="text" placeholder="깃허브 아이디 입력" value={username} onChange={(e) => setUsername(e.target.value)} onKeyDown={handleKeyDown} />
         </Container>
     );
 }

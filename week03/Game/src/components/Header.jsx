@@ -1,10 +1,26 @@
 // Header.jsx
 import styled from "@emotion/styled";
 
+export default function Header({ activeTab, setActiveTab }) {
+    return (
+        <StyledHeader>
+            <Title>숫자 야구 || 깃허브 검색</Title>
+            <BtnGroup>
+                <Btn onClick={() => setActiveTab("github")} active={activeTab === "github"}>
+                    깃허브 검색
+                </Btn>
+                <Btn onClick={() => setActiveTab("baseball")} active={activeTab === "baseball"}>
+                    숫자 야구
+                </Btn>
+            </BtnGroup>
+        </StyledHeader>
+    );
+}
+
 const StyledHeader = styled.header`
     background-color: ${({ theme }) => theme.colors.primary};
     text-align: center;
-    padding: ${({ theme }) => theme.spacing.lg};
+    padding: ${({ theme }) => theme.spacing.xl};
 `;
 
 const Title = styled.h1`
@@ -15,30 +31,19 @@ const Title = styled.h1`
 `;
 const Btn = styled.button`
     background-color: ${({ theme }) => theme.colors.secondary};
-    color: ${({ theme }) => theme.colors.text};
     border: none;
-    border-radius: ${({ theme }) => theme.spacing.sm};
-    padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+    border-radius: ${({ theme }) => theme.spacing.lg};
+    color: ${({ theme }) => theme.colors.text};
+    background-color: ${({ active, theme }) => (active ? theme.colors.secondary : theme.colors.background)};
+    padding: ${({ theme }) => theme.spacing.md};
     font-size: ${({ theme }) => theme.fontSizes.lg};
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
 `;
 const BtnGroup = styled.div`
     display: flex;
     justify-content: center;
+    width: 100%;
     gap: ${({ theme }) => theme.spacing.md};
 `;
-
-export default function Header({ activeTab, setActiveTab }) {
-    return (
-        <StyledHeader>
-            <Title>숫자 야구 || 깃허브 검색</Title>
-            <BtnGroup>
-                <Btn onClick={() => setActiveTab("baseball")} active={activeTab === "baseball"}>
-                    숫자 야구
-                </Btn>
-                <Btn onClick={() => setActiveTab("github")} active={activeTab === "github"}>
-                    깃허브 검색
-                </Btn>
-            </BtnGroup>
-        </StyledHeader>
-    );
-}
