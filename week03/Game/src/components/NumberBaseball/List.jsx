@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import GameRecordItem from "./GameRecordItem";
 
 const Container = styled.div`
     display: flex;
@@ -10,7 +11,10 @@ const Container = styled.div`
 export default function List() {
     return (
         <Container>
-            <p>텍스트트</p>
+            <p>이전기록 리스트 목록</p>
+            <GameRecordItem />
+            <GameRecordItem />
+            <GameRecordItem />
         </Container>
     );
 }
