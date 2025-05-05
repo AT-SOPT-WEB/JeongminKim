@@ -1,11 +1,20 @@
-/** @jsxImportSource @emotion/react */
+import React from "react";
 import styled from "@emotion/styled";
 
-const StyledButton = styled.button`
+interface StyledButtonProps {
+    isValid?: boolean;
+}
+
+type ButtonProps = {
+    isValid?: boolean;
+    children: React.ReactNode;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+const StyledButton = styled.button<StyledButtonProps>`
     padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
     font-size: ${({ theme }) => theme.fontSizes.md};
     color: ${({ theme }) => theme.colors.background};
-    background-color: ${({ theme, isValid }) => (isValid ? theme.colors.valid : theme.colors.invalid)};
+    background-color: ${({ theme, isValid }) => (isValid ? theme.colors.valid : theme.colors.error)};
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -24,7 +33,7 @@ const StyledButton = styled.button`
     }
 `;
 
-function Button({ children, isValid = true, ...rest }) {
+function Button({ children, isValid = true, ...rest }: ButtonProps) {
     return (
         <StyledButton isValid={isValid} {...rest}>
             {children}
