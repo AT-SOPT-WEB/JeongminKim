@@ -1,28 +1,26 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import styled from "@emotion/styled";
 import axios from "axios";
-import { Link, Text } from "./styles";
+import { Link, Text,Header, Nav } from "./styles";
+import { useNickname } from "../../contexts/NicknameContext"; // context에서 가져오기
 
 function DashboardLayout() {
-    const [nickname, setNickname] = useState<string>("");
+    const { nickname, setNickname } = useNickname();
 
     useEffect(() => {
         const fetchNickname = async () => {
-            try {
-                const userId = localStorage.getItem("userId");
-                if (!userId) return;
+            const userId = localStorage.getItem("userId");
+            if (!userId || nickname) return; // 이미 있으면 호출 안 함
 
+            try {
                 const response = await axios.get("https://api.atsopt-seminar4.site/api/v1/users/me", {
                     headers: {
-                        userId: userId, // 서버가 userId를 헤더로 요구함
+                        userId: userId,
                     },
                 });
 
                 if (response.data.success && response.data.data?.nickname) {
                     setNickname(response.data.data.nickname);
-                } else {
-                    console.warn("닉네임 정보 없음");
                 }
             } catch (err) {
                 console.error("유저 정보 불러오기 실패:", err);
@@ -30,7 +28,7 @@ function DashboardLayout() {
         };
 
         fetchNickname();
-    }, []);
+    }, [nickname, setNickname]);
 
     return (
         <>
@@ -49,17 +47,6 @@ function DashboardLayout() {
     );
 }
 
+
 export default DashboardLayout;
 
-const Header = styled.header`
-    display: flex;
-    gap: 20px;
-    padding: 1rem;
-    background-color: ${({ theme }) => theme.colors.primary};
-    justify-content: space-between;
-`;
-
-const Nav = styled.nav`
-    display: flex;
-    gap: 20px;
-`;

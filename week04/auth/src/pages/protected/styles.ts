@@ -37,3 +37,16 @@ export const Link = styled(RouterLink)`
         color: ${({ theme }) => theme.colors.text};
     }
 `;
+
+export const Header = styled.header`
+    display: flex;
+    gap: 20px;
+    padding: 1rem;
+    background-color: ${({ theme }) => theme.colors.primary};
+    justify-content: space-between;
+`;
+
+export const Nav = styled.nav`
+    display: flex;
+    gap: 20px;
+`;

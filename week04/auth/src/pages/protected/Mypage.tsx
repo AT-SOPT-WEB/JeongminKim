@@ -4,46 +4,26 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { Container, Title, Link } from "./styles";
 import { useNickname } from "../../contexts/NicknameContext";
-
 function Mypage() {
     const { nickname, setNickname } = useNickname();
-    const [input, setInput] = useState(nickname);
+
+    // 입력 전용 상태
+    const [inputNickname, setInputNickname] = useState(nickname);
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
 
-    // 1️⃣ 닉네임 조회
     useEffect(() => {
-        const fetchNickname = async () => {
-            const userId = localStorage.getItem("userId");
-            if (!userId) return;
+        // nickname이 바뀌었을 때 input에도 반영 (처음 렌더링 또는 외부 변경 대응)
+        setInputNickname(nickname);
+    }, [nickname]);
 
-            try {
-                const response = await axios.get("https://api.atsopt-seminar4.site/api/v1/users/me", {
-                    headers: {
-                        userId,
-                    },
-                });
-
-                if (response.data.success && response.data.data?.nickname) {
-                    setNickname(response.data.data.nickname);
-                }
-            } catch (err) {
-                console.error("닉네임 불러오기 실패:", err);
-            }
-        };
-
-        fetchNickname();
-    }, []);
-
-    // 2️⃣ 닉네임 유효성 검사 함수
     const isValidNickname = (value: string) => /^[가-힣a-zA-Z0-9]{1,20}$/.test(value);
 
-    // 3️⃣ 수정 요청 함수
     const handleSubmit = async () => {
         const userId = localStorage.getItem("userId");
         if (!userId) return;
 
-        if (!isValidNickname(nickname)) {
+        if (!isValidNickname(inputNickname)) {
             setError("닉네임은 한글/영문/숫자만 사용 가능하며 1~20자여야 합니다.");
             setMessage("");
             return;
@@ -52,16 +32,12 @@ function Mypage() {
         try {
             const response = await axios.patch(
                 "https://api.atsopt-seminar4.site/api/v1/users",
-                { nickname },
-                {
-                    headers: {
-                        userId,
-                    },
-                }
+                { nickname: inputNickname },
+                { headers: { userId } }
             );
 
             if (response.data.success) {
-                setNickname(input); // ✅ Context도 업데이트
+                setNickname(inputNickname); // ✅ 여기서만 Context 업데이트
                 setMessage("닉네임이 성공적으로 변경되었습니다.");
                 setError("");
             } else {
@@ -83,8 +59,8 @@ function Mypage() {
                 type="text"
                 name="nickname"
                 placeholder="닉네임"
-                value={nickname}
-                onChange={(e) => setNickname(e.target.value)}
+                value={inputNickname}
+                onChange={(e) => setInputNickname(e.target.value)} // ✅ 실시간 반영은 input만
             />
 
             {error && <p style={{ color: "red" }}>{error}</p>}
@@ -98,5 +74,6 @@ function Mypage() {
         </Container>
     );
 }
+
 
 export default Mypage;
