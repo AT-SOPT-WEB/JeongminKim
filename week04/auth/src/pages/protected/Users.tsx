@@ -15,7 +15,7 @@ function Users() {
                     throw new Error("Function not implemented.");
                 }}
             />
-            <Button variant="outline">조회하기</Button>
+            <Button>조회하기</Button>
             <Text>회원 목록</Text>
         </Container>
     );

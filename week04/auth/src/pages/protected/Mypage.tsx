@@ -7,9 +7,17 @@ function Mypage() {
         <Container>
             <Title>내 정보</Title>
 
-            <Input type="text" name="nickname" placeholder="닉네임" />
+            <Input
+                type="text"
+                name="nickname"
+                placeholder="닉네임"
+                value={""}
+                onChange={function (event: React.ChangeEvent<HTMLInputElement>): void {
+                    throw new Error("Function not implemented.");
+                }}
+            />
 
-            <Button variant="outline">수정하기</Button>
+            <Button>수정하기</Button>
             <Link to="/login">로그아웃</Link>
         </Container>
     );

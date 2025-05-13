@@ -24,7 +24,7 @@ export const Text = styled.p`
     color: ${({ theme }) => theme.colors.text};
     margin-top: 10px;
 `;
-export const error = styled(Text)`
+export const Error = styled(Text)`
     color: ${({ theme }) => theme.colors.error};
 `;
 

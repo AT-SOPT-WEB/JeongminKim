@@ -9,7 +9,7 @@ function Login() {
         password: "",
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: { target: { name: any; value: any } }) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
@@ -27,7 +27,7 @@ function Login() {
             <Input type="text" name="username" placeholder="아이디" value={form.username} onChange={handleChange} />
             <Input type="password" name="password" placeholder="비밀번호" value={form.password} onChange={handleChange} />
 
-            <Button variant="outline" isValid={isFormValid} disabled={!isFormValid} onClick={handleSubmit}>
+            <Button isValid={isFormValid} disabled={!isFormValid} onClick={handleSubmit}>
                 로그인
             </Button>
 
