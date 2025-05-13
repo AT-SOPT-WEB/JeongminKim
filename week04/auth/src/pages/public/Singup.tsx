@@ -1,5 +1,6 @@
 import { useState, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { Container, Title, Error } from "./styles";
@@ -9,12 +10,6 @@ const validate = {
     username: (val: string) => /^[a-zA-Z0-9]{8,20}$/.test(val),
     password: (val: string) => /^[a-zA-Z0-9]{8,20}$/.test(val),
     nickname: (val: string) => /^[가-힣a-zA-Z0-9]{1,20}$/.test(val),
-};
-
-// 아이디 중복 확인 (예시)
-const checkUsernameDuplicate = async (username: string): Promise<boolean> => {
-    // 실제로는 API 요청
-    return true;
 };
 
 interface FormState {
@@ -40,7 +35,6 @@ function Signup() {
     const [confirmPassword, setConfirmPassword] = useState<string>("");
     const [errors, setErrors] = useState<ErrorState>({});
     const [loading, setLoading] = useState<boolean>(false);
-    const [isChecking, setIsChecking] = useState<boolean>(false);
     const navigate = useNavigate();
 
     const keyOrder: (keyof FormState)[] = ["username", "password", "nickname"];
@@ -78,31 +72,25 @@ function Signup() {
         // 유효성 검사 실패
         if (!validate[currentKey](value)) return;
 
-        // 아이디 중복 확인
-        if (currentKey === "username") {
-            setIsChecking(true);
-            const isAvailable = await checkUsernameDuplicate(value);
-            setIsChecking(false);
-            if (!isAvailable) {
-                setErrors((prev) => ({ ...prev, username: "이미 사용 중인 아이디입니다." }));
-                return;
-            }
-        }
-
         // 비밀번호 확인
         if (currentKey === "password" && form.password !== confirmPassword) {
             setErrors((prev) => ({ ...prev, confirmPassword: "비밀번호가 일치하지 않습니다." }));
             return;
         }
 
-        // 모든 통과
+        // 모든 통과 - 마지막 스텝일 경우 회원가입 요청
         if (step === 2) {
             try {
                 setLoading(true);
-                // await axios.post("/api/signup", form);
+                await axios.post("https://api.atsopt-seminar4.site/api/v1/auth/signup", {
+                    loginId: form.username,
+                    password: form.password,
+                    nickname: form.nickname,
+                });
                 alert("회원가입이 완료되었습니다!");
                 navigate("/login");
-            } catch (error) {
+            } catch (error: any) {
+                console.error("회원가입 실패:", error.response?.data || error.message);
                 alert("회원가입에 실패했습니다.");
             } finally {
                 setLoading(false);
@@ -112,7 +100,10 @@ function Signup() {
         }
     };
 
-    const isCurrentStepValid = validate[currentKey](currentValue) && !errors[currentKey] && !(currentKey === "password" && confirmPassword !== form.password);
+    const isCurrentStepValid =
+        validate[currentKey](currentValue) &&
+        !errors[currentKey] &&
+        !(currentKey === "password" && confirmPassword !== form.password);
 
     return (
         <Container>
@@ -120,15 +111,33 @@ function Signup() {
 
             {step === 0 && (
                 <>
-                    <Input name="username" type="text" placeholder="아이디 (영문, 숫자 8~20자)" value={form.username} onChange={handleChange} />
+                    <Input
+                        name="username"
+                        type="text"
+                        placeholder="아이디 (영문, 숫자 8~20자)"
+                        value={form.username}
+                        onChange={handleChange}
+                    />
                     {errors.username && <Error>{errors.username}</Error>}
                 </>
             )}
 
             {step === 1 && (
                 <>
-                    <Input name="password" type="password" placeholder="비밀번호 (영문, 숫자 8~20자)" value={form.password} onChange={handleChange} />
-                    <Input name="confirmPassword" type="password" placeholder="비밀번호 확인" value={confirmPassword} onChange={handleChange} />
+                    <Input
+                        name="password"
+                        type="password"
+                        placeholder="비밀번호 (영문, 숫자 8~20자)"
+                        value={form.password}
+                        onChange={handleChange}
+                    />
+                    <Input
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="비밀번호 확인"
+                        value={confirmPassword}
+                        onChange={handleChange}
+                    />
                     {errors.password && <Error>{errors.password}</Error>}
                     {errors.confirmPassword && <Error>{errors.confirmPassword}</Error>}
                 </>
@@ -136,12 +145,22 @@ function Signup() {
 
             {step === 2 && (
                 <>
-                    <Input name="nickname" type="text" placeholder="닉네임 (한글, 영어, 숫자 1~20자)" value={form.nickname} onChange={handleChange} />
+                    <Input
+                        name="nickname"
+                        type="text"
+                        placeholder="닉네임 (한글, 영어, 숫자 1~20자)"
+                        value={form.nickname}
+                        onChange={handleChange}
+                    />
                     {errors.nickname && <Error>{errors.nickname}</Error>}
                 </>
             )}
 
-            <Button onClick={handleNext} disabled={!isCurrentStepValid || loading || isChecking} isValid={isCurrentStepValid}>
+            <Button
+                onClick={handleNext}
+                disabled={!isCurrentStepValid || loading}
+                isValid={isCurrentStepValid}
+            >
                 {step < 2 ? "다음" : "가입하기"}
             </Button>
         </Container>
