@@ -50,3 +50,16 @@ export const Nav = styled.nav`
     display: flex;
     gap: 20px;
 `;
+
+export const List = styled.div`
+    margin-top: 20px;
+    padding: 10px;
+    background-color: ${({ theme }) => theme.colors.background};
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    height: 200px;
+    overflow-y: auto;
+`;
