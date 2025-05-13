@@ -54,7 +54,7 @@ export const Nav = styled.nav`
 export const List = styled.div`
     margin-top: 20px;
     padding: 10px;
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.secondary};
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 80%;

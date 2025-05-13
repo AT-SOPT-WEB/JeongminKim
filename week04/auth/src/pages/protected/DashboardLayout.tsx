@@ -7,6 +7,13 @@ import { useNickname } from "../../contexts/NicknameContext"; // context에서 �
 function DashboardLayout() {
     const { nickname, setNickname } = useNickname();
 
+
+    const handleLogout = () => {
+        localStorage.removeItem("userId");
+        localStorage.removeItem("nickname");
+        setNickname(""); // Context도 초기화
+    };
+
     useEffect(() => {
         const fetchNickname = async () => {
             const userId = localStorage.getItem("userId");
@@ -36,7 +43,7 @@ function DashboardLayout() {
                 <Nav>
                     <Link to="/mypage">내 정보</Link>
                     <Link to="/users">회원 조회</Link>
-                    <Link to="/login">로그아웃</Link>
+                    <Link to="/login" onClick={handleLogout}>로그아웃</Link>
                 </Nav>
                 <Text>{nickname ? `${nickname}님` : ""}</Text>
             </Header>
