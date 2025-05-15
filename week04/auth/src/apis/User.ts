@@ -1,7 +1,7 @@
-import axios from "axios";
+import apiClient from "./axiosInstance";
 
 export async function fetchUsers(keyword: string) {
-    const response = await axios.get("https://api.atsopt-seminar4.site/api/v1/users", {
+    const response = await apiClient.get("/users", {
         params: keyword ? { keyword } : {},
     });
 

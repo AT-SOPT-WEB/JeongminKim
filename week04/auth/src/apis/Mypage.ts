@@ -1,10 +1,12 @@
-import axios from "axios";
+import apiClient from "./axiosInstance";
 
 export async function updateNickname(userId: string, nickname: string) {
-    const res = await axios.patch(
-        "https://api.atsopt-seminar4.site/api/v1/users",
+    const res = await apiClient.patch(
+        "/users",
         { nickname },
-        { headers: { userId } }
+        {
+            headers: { userId },
+        }
     );
 
     if (!res.data.success) {
