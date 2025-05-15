@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
 import { Container, Title, Text, List } from "./styles";
 
 function Users() {

@@ -1,16 +1,10 @@
-import React from "react";
 import styled from "@emotion/styled";
 
 interface StyledButtonProps {
     isValid?: boolean;
 }
 
-type ButtonProps = {
-    isValid?: boolean;
-    children: React.ReactNode;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
-const StyledButton = styled.button<StyledButtonProps>`
+export const StyledButton = styled.button<StyledButtonProps>`
     padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
     font-size: ${({ theme }) => theme.fontSizes.md};
     color: ${({ theme }) => theme.colors.background};
@@ -32,13 +26,3 @@ const StyledButton = styled.button<StyledButtonProps>`
         cursor: not-allowed;
     }
 `;
-
-function Button({ children, isValid = true, ...rest }: ButtonProps) {
-    return (
-        <StyledButton isValid={isValid} {...rest}>
-            {children}
-        </StyledButton>
-    );
-}
-
-export default Button;
