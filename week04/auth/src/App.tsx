@@ -8,9 +8,9 @@ import { NicknameProvider } from "./contexts/NicknameContext";
 import Login from "./pages/public/Login/Login";
 import Signup from "./pages/public/Singup/Singup";
 import NotFound from "./pages/NotFound";
-import DashboardLayout from "./pages/protected/DashboardLayout";
-import Mypage from "./pages/protected/Mypage";
-import Users from "./pages/protected/Users";
+import DashboardLayout from "./pages/protected/DashboardLayout/DashboardLayout";
+import Mypage from "./pages/protected/Mypage/Mypage";
+import Users from "./pages/protected/User/Users";
 
 function App() {
     return (
