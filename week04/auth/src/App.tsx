@@ -5,8 +5,8 @@ import "./App.css";
 import { NicknameProvider } from "./contexts/NicknameContext"; 
 
 // 페이지 컴포넌트
-import Login from "./pages/public/Login";
-import Signup from "./pages/public/Singup";
+import Login from "./pages/public/Login/Login";
+import Signup from "./pages/public/Singup/Singup";
 import NotFound from "./pages/NotFound";
 import DashboardLayout from "./pages/protected/DashboardLayout";
 import Mypage from "./pages/protected/Mypage";
