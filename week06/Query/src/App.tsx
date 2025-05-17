@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// 3. 먼저 버튼기능 없이 바로 조회가 되게 구현해보자!
+
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
+const getUsers = async () => {
+	const response = await axios.get(
+		"https://api.atsopt-seminar4.site/api/v1/users",
+	);
+
+	return response.data.data;
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+	const { data, isPending } = useQuery({
+		queryKey: ["users"],
+		queryFn: getUsers,
+	});
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	if (isPending) return <div>로딩 중...</div>;
+
+	return (
+		<div>
+			<h1>유저 목록</h1>
+
+			{data?.nicknameList.map((nickname: string, index: number) => (
+				<div key={index}>
+					<h2>{nickname}</h2>
+				</div>
+			))}
+		</div>
+	);
 }
 
-export default App
+export default App;
